@@ -65,8 +65,10 @@ server <- function(input, output) {
   iv$add_rule("adverb", sv_required())
   iv$enable()
 
+
   story <- eventReactive(input$submit, {
     req(iv$is_valid())
+    cat("-------------------", "Help ME", "\n", file = stderr())
     cat("Processing submit\n")
     try(add_row_to_db(
       noun = input$noun,
